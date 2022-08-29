@@ -7,7 +7,6 @@ import (
 	"os"
 	"strconv"
 	"time"
-	
 )
 
 func main() {
@@ -61,7 +60,7 @@ func handleConnection(conn net.Conn, storage *Storage) {
 						break
 					}
 
-					storage.SetWithExpiry(args[0].String(), args[1].String()), time.Duration(expiryInMilliseconds)*time.Millisecond)
+					storage.SetWithExpiry(args[0].String(), args[1].String(), time.Duration(expiryInMilliseconds)*time.Millisecond)
 				} else {
 					conn.Write([]byte(fmt.Sprintf("-ERR unknown option for set: %s\r\n", args[2].String())))
 				}
